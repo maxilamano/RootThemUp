@@ -4,7 +4,7 @@ depth = -999 //siempre arriba
 
 instance_create_depth(0,0,-999,objGamepad); //gamepad
 
-instUpgradeMenu = instance_create_layer(room_width/2, room_height+(room_height/2), "Upgrades", objUpgradeMenu)
+instUpgradeMenu = instance_create_layer(room_width/2, room_height+(room_height/2), layer_get_id("Upgrades"), objUpgradeMenu)
 instMainPlant = instance_create_depth(room_width/2,room_height/2,0,objMainPlant) //planta principal
 
 global.debugMode = false; //modo debug
@@ -18,7 +18,7 @@ intEnemySpawnDistance = room_width;
 
 
 //secuencia menu mejoras
-sqcUpgradeMenu = layer_sequence_create("Upgrades",room_width/2,room_height/2,sqcNone);
+sqcUpgradeMenu = layer_sequence_create(layer_get_id("Upgrades"),room_width/2,room_height/2,sqcNone);
 global.boolUpgradeOpen = false //indica si el menu ed mejoras está abierto
 
 global.arrUpgrades = [0,0,0]; //indica la mejora comprada en cada tier (0 significa ninguno)
@@ -28,7 +28,7 @@ global.intCurrentTier = 0; //tier mas alta comprada (0  significa ninguno)
 intWaterMaxIncreaseTime = 5 * room_speed;
 intWaterIncreaseTime = intWaterMaxIncreaseTime;
 intWaterIncreaseValue = 5;
-global.intWater = 100000// cantidad inicial de agua
+global.intWater = 0// cantidad inicial de agua
 
 //vida
 global.intPlantLife = 100;
