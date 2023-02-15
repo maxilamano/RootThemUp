@@ -22,31 +22,6 @@ if(abs(floatVSpeed) < abs(lengthdir_y(floatMaxSpeed,intMoveDirection))){
 	floatVSpeed = lengthdir_y(floatMaxSpeed,intMoveDirection)
 }
 
-//knockback bala y daño
-if(place_meeting(x,y,objBullet)){
-	audio_play_sound(fxHit,4,false) //sonido
-	//calculo daño
-	switch(strEnemyType){
-		case "bug":
-			floatBulletDamage = floatBulletDefaultDamage * intMaxLife/intBugLife
-			break;
-		case "pyro":
-			floatBulletDamage = floatBulletDefaultDamage * intMaxLife/intPyroLife
-			break;
-		case "timber":
-			floatBulletDamage = floatBulletDefaultDamage * intMaxLife/intTimberLife
-			break;
-	}
-	
-	if(intLife - floatBulletDamage > 0){
-		intLife -= floatBulletDamage;
-	}else{
-		instance_create_depth(x,y,depth,objWater)
-		instance_destroy(self); //morir
-	}
-	floatHSpeed = -lengthdir_x(floatKnockback,point_direction(x,y,instance_nearest(x,y,objBullet).x,instance_nearest(x,y,objBullet).y));
-	floatVSpeed = -lengthdir_y(floatKnockback,point_direction(x,y,instance_nearest(x,y,objBullet).x,instance_nearest(x,y,objBullet).y));
-}
 
 //pa no dividir por 0
 if (floatHSpeed == 0){

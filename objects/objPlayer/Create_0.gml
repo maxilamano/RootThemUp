@@ -10,3 +10,4 @@ floatMoveAngle = 0; //angulo de movimiento
 //disparo
 intMaxReloadTime = 10 //tiempo de recarga entre cada bala (se mide en fotogramas)
 intReloadTime = 0 //tiempo restante de espera para disparar (se mide en fotogramas)
+

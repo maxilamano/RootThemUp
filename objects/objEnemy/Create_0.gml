@@ -54,7 +54,7 @@ floatBulletDefaultDamage = 20;
 if(instance_exists(objBullet)){//cambiar daño segun bala
 	floatBulletDefaultDamage = instance_nearest(x,y,objBullet).floatDamage
 }
-floatBulletDamage = floatBulletDefaultDamage;
+//floatBulletDamage = floatBulletDefaultDamage;
 
 intBugLife = 70;
 intPyroLife = 100;

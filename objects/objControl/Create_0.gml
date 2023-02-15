@@ -1,6 +1,8 @@
 /// @description Creacion de variables e instancias
 
 depth = -999 //siempre arriba
+intTimeToSeg = 0; //tiempo para completar segundo
+global.intTimeLasted = 0; //segundos en partida
 
 instance_create_depth(0,0,-999,objGamepad); //gamepad
 
@@ -9,11 +11,11 @@ instMainPlant = instance_create_depth(room_width/2,room_height/2,0,objMainPlant)
 
 global.debugMode = false; //modo debug
 
-intEnemyMaxSpawnTime = random_range(2*room_speed,5*room_speed); //tiempo de spawn de enemigos
+intEnemyMaxSpawnTime = 4*room_speed; //tiempo de spawn de enemigos
 intLevel = 1; //nivel de dificultad, afecta al tiempo de spawn de enemigos e incrementa con el tiempo
 intLevelMaxIncreaseTime = 10*room_speed; //tiempo maximo para subir de nivel
 intLevelIncreaseTime = intLevelMaxIncreaseTime; //tiempo restante para subir de nivel
-intEnemySpawnTime = 0//intEnemyMaxSpawnTime;
+intEnemySpawnTime = 0//intEnemyMaxSpawnTime
 intEnemySpawnDistance = room_width;
 
 
@@ -35,7 +37,7 @@ global.intPlantLife = 100;
 
 
 //ataque
-global.floatDamage = 20
+global.floatDamage = 20;
 
 //mini plantas
 arrMiniPlantPrices = [350, 500, 400] //precios mini plantas

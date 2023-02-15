@@ -35,14 +35,14 @@ if(!global.boolUpgradeOpen){
 			}
 		}
 	}else{
-		switch(global.arrUpgrades[0]){
+		switch(global.arrUpgrades[0]){ //disparo
 			case 1: //flor
 				if(intReloadTime > 0){
 					intReloadTime -= 4
 				}else{
 					intReloadTime = intMaxReloadTime;
 					if(instance_exists(objEnemy)){
-						audio_play_sound(fxShoot,4,false,1,0,random_range(0.7,1.3)) //sonido
+						audio_play_sound(fxShoot,4,false,1,0,random_range(1,1.8)) //sonido
 						instNewBullet = instance_create_depth(x,y,depth,objBullet)
 						instNewBullet.floatHSpeed = lengthdir_x(instNewBullet.floatShootSpeed, point_direction(x, y, instance_nearest(x,y,objEnemy).x, instance_nearest(x,y,objEnemy).y));
 						instNewBullet.floatVSpeed = lengthdir_y(instNewBullet.floatShootSpeed, point_direction(x, y, instance_nearest(x,y,objEnemy).x, instance_nearest(x,y,objEnemy).y));
@@ -63,8 +63,8 @@ if(!global.boolUpgradeOpen){
 					if(global.arrUpgrades[1] == 2){
 						intShootAngle = 20;
 					}
+					audio_play_sound(fxShoot,4,false,1,0,random_range(0.7,1.3)) //sonido
 					for(i = 0; i < 360; i+= intShootAngle){
-						audio_play_sound(fxShoot,4,false,1,0,random_range(0.7,1.3)) //sonido
 						instNewBullet = instance_create_depth(x,y,depth,objBullet)
 						instNewBullet.floatHSpeed = lengthdir_x(instNewBullet.floatShootSpeed,i)
 						instNewBullet.floatVSpeed = lengthdir_y(instNewBullet.floatShootSpeed,i)
@@ -74,18 +74,18 @@ if(!global.boolUpgradeOpen){
 			case 3: //arbol
 				if(intReloadTime > 0){
 					if(global.arrUpgrades[1] == 2){
-						intReloadTime -= 1.1;
+						intReloadTime -= 2;
 					}else{
-						intReloadTime-= 0.8;
+						intReloadTime-= 1.1;
 					}
 				}else{
 					intReloadTime = intMaxReloadTime;
 					if(instance_exists(objEnemy)){
-						audio_play_sound(fxShoot,4,false,1,0,random_range(0.7,1.3)) //sonido
+						audio_play_sound(fxShoot,4,false,1,0,random_range(0.3,0.8)) //sonido
 						instNewBullet = instance_create_depth(x,y,depth,objBullet)
 						instNewBullet.floatHSpeed = lengthdir_x(instNewBullet.floatShootSpeed/2, point_direction(x, y, instance_nearest(x,y,objEnemy).x, instance_nearest(x,y,objEnemy).y));
 						instNewBullet.floatVSpeed = lengthdir_y(instNewBullet.floatShootSpeed/2, point_direction(x, y, instance_nearest(x,y,objEnemy).x, instance_nearest(x,y,objEnemy).y));
-						instNewBullet.floatDamage = instNewBullet.floatDamage * 2.5;
+						instNewBullet.floatDamage = instNewBullet.floatDamage * 3;
 						
 						//agrandar bala
 						instNewBullet.image_xscale = 2

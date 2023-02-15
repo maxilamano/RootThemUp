@@ -1,9 +1,10 @@
 /// @description DEBUG Y GUI
 // mostrar variables en debug
 if(global.debugMode){
-	draw_text(0,0,"keyVAxis: " + string(objGamepad.keyVAxis));
-	draw_text(0,20,"keyHAxis: " + string(objGamepad.keyHAxis));
-	draw_text(0,40,"Shoot: " + string(objGamepad.keyShoot));
+	draw_text(0,20,"Level: " + string(intLevel));
+	draw_text(0,35,"Spawn Time: " + string(intEnemySpawnTime));
+	draw_text(0,50,"Max Spawn Time: " + string(intEnemyMaxSpawnTime));
+	draw_text(0,65,"Total Enemies: " + string(instance_number(objEnemy)));
 }
 
 //--------------indicador mejoras, agua y vida--------------
@@ -17,7 +18,7 @@ if(objGamepad.strControllerMode == "keyboard"){
 }
 
 //agua
-draw_sprite(sprWaterIcon,0,room_width-16,0)
+draw_sprite(sprWaterIcon,0,room_width-24,8)
 draw_set_halign(fa_right)
 draw_set_font(fntScore);
 draw_text(room_width-30, 4,string(global.intWater))

@@ -12,4 +12,4 @@ if(global.boolUpgradeOpen){
 		image_alpha += 0.03
 	}
 }
-draw_self();
+

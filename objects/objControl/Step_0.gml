@@ -1,14 +1,19 @@
 /// @description Enemigos y mejoras
 
+if(!audio_is_playing(musicForest)){ //sonido de fondo
+	audio_play_sound(musicForest,10,true)
+}
+
 //spawn enemigos
 if(!global.boolUpgradeOpen){
 	if(intEnemySpawnTime > 0 ){
 		intEnemySpawnTime--; //reducir tiempo
 	}else{
-		intEnemyMaxSpawnTime -= max(0.5,15/intLevel); //aumentar nivel
-		if(intEnemyMaxSpawnTime < room_speed * 0.5){
-			intEnemyMaxSpawnTime = room_speed * 0.5;
+		/*
+		if(intEnemyMaxSpawnTime < 1){
+			intEnemyMaxSpawnTime = 1;
 		}
+		*/
 		intEnemySpawnTime = intEnemyMaxSpawnTime; //reiniciar el tiempo de spawn
 		intEnemySpawnAngle = random_range(0,360); //direccion en la que sale el enemigo
 		intEnemySpawnX = objMainPlant.x + lengthdir_x(intEnemySpawnDistance,intEnemySpawnAngle); //pos x del enemigo
@@ -24,6 +29,7 @@ if(!global.boolUpgradeOpen){
 	}else{
 		intLevelIncreaseTime = intLevelMaxIncreaseTime
 		intLevel++
+		intEnemyMaxSpawnTime -= int64(10-min(9,intLevel/5)); //aumentar nivel
 		show_debug_message(intLevel)
 	}
 	
@@ -93,4 +99,23 @@ if(global.intCurrentTier == 2 and global.arrUpgrades[1] == 1 and !global.boolUpg
 
 if(global.intPlantLife <=0){
 	room_goto(roomGameOver)
+}
+
+//eliminar animacion entrada
+/*
+if(layer_sequence_exists("Instances",instOpening)){
+	sequence_destroy(instOpening);
+}*/
+
+//mantener mouse en ventana
+if (window_get_fullscreen()){
+	window_mouse_set(clamp(window_mouse_get_x(),0,window_get_width()),clamp(window_mouse_get_y(),0,window_get_height()))
+}
+
+if(!global.boolUpgradeOpen){
+	intTimeToSeg++;
+}
+if(intTimeToSeg >= 60){
+	global.intTimeLasted++; //aumentar tiempo
+	intTimeToSeg = 0;
 }
